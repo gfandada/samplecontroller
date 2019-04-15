@@ -34,6 +34,7 @@ func getKubeMasterUrl(args []string) string {
 }
 
 func NewApp(args []string) {
+	defer glog.Flush()
 	// 处理信号量
 	stopCh := signals.SetupSignalHandler()
 
