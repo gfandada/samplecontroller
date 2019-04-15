@@ -1,0 +1,9 @@
+apiVersion: stable.k8s.io/v1
+kind: Student
+metadata:
+  name: test1
+spec:
+  name: "gfandada"
+  school: "test"
+  email: "gfandada@gmail.com"
+  address: "chengdu city"

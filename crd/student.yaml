@@ -1,0 +1,29 @@
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  # 格式是<plural>.<group>
+  name: students.stable.k8s.io
+spec:
+  # group被用在 REST API中: /apis/<group>/<version>
+  group: stable.k8s.io
+  # 支持版本list
+  versions:
+    - name: v1
+      # 是否有效的开关.
+      # Each version can be enabled/disabled by Served flag
+      served: true
+      # 只有一个版本能被标注为storage
+      storage: true
+  # 属于Namespaced or Cluster
+  scope: Namespaced
+  names:
+    # 被用在 URL中: /apis/<group>/<version>/<plural>
+    plural: students
+    # as an alias on the CLI and for display，在cli中作为别名
+    singular: student
+    # 资源类型，一般在manifests中使用
+    kind: Student
+    # shortNames allow shorter string to match your resource on the CLI
+    # 简称，就像service的简称是svc
+    shortNames:
+      - std
