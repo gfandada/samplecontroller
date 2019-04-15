@@ -96,13 +96,32 @@
 ## 4.编写controller的业务逻辑
     参考sample-controller工程，写的比较简单
 ## 5.启动controller    
-    [root@localhost samplecontroller]# ./samplecontroller -kubeconfig=$你的kubeconfig路径 -alsologtostderr=true       
-    I0415 11:39:34.898050    3501 samplecontroller.go:59] 创建事件广播器
-    I0415 11:39:34.900428    3501 samplecontroller.go:76] 监听student的add/update/delete事件
-    I0415 11:39:34.900459    3501 samplecontroller.go:102] 开始controller业务，开始一次缓存数据同步
-    I0415 11:39:35.000893    3501 samplecontroller.go:107] 启动10个worker
-    I0415 11:39:35.000973    3501 samplecontroller.go:112] worker已经全部启动
+    [root@localhost samplecontroller]# ./samplecontroller
+    这是一个简易的自定制的k8s controller，用来演示k8s的终态运维的思想，
+    https://github.com/gfandada/samplecontroller，
+    gfandada@gmail.com
+    
+    Usage:
+      samplecontroller [command]
+    
+    Available Commands:
+      help        Help about any command
+      run         run config=[kubeConfig的路径]
+    
+    Flags:
+          --config string   config file (default is $HOME/.samplecontroller.yaml)
+      -h, --help            help for samplecontroller
+      -t, --toggle          Help message for toggle
+    
+    Use "samplecontroller [command] --help" for more information about a command.
+    [root@localhost samplecontroller]# ./samplecontroller run config=/root/.kube/config 
+    ERROR: logging before flag.Parse: I0415 15:02:28.619121  109337 samplecontroller.go:59] 创建事件广播器
+    ERROR: logging before flag.Parse: I0415 15:02:28.619246  109337 samplecontroller.go:76] 监听student的add/update/delete事件
+    ERROR: logging before flag.Parse: I0415 15:02:28.619264  109337 samplecontroller.go:102] 开始controller业务，开始一次缓存数据同步
+    ERROR: logging before flag.Parse: I0415 15:02:28.719511  109337 samplecontroller.go:107] 启动10个worker
+    ERROR: logging before flag.Parse: I0415 15:02:28.719547  109337 samplecontroller.go:112] worker已经全部启动
     ......
+    FIMXE ERROR: logging before flag.Parse多个flag库有些冲突，不影响本项目，正式开发可以考虑去掉cobra，打开flag.Parse()
 ## 6.修改crd实例文件观察controller
     ........
     kubectl apply -f test1.yaml
