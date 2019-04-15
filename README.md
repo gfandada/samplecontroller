@@ -17,7 +17,6 @@
     students.stable.k8s.io        2019-04-12T02:42:08Z
     
     3 通过模板student.yaml来实例一个Student对象，创建test1.yaml，同理实例test2.yaml
-    kubectl apply -f fanlin.yaml
     [root@localhost student]# kubectl apply -f test1.yaml
     student.stable.k8s.io/test1 created
     
